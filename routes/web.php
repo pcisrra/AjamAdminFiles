@@ -1,6 +1,12 @@
 <?php
 
 Route::redirect('/', '/login');
+Route::resource('juridica','JuridicaController');
+Route::resource('auditoria','AuditoriaController');
+Route::resource('empaste','EmpastesController');
+//
+Route::get('/auditoria/search/','AuditoriaController@search')->name('auditoria.search');
+
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));

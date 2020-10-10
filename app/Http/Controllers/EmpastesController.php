@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Empastes;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class EmpastesController extends Controller
@@ -10,12 +11,12 @@ class EmpastesController extends Controller
     public function index()
     {
         $empastes = Empastes::latest()->paginate(20);
-        return view('empastes.index', compact('empastes'))->with('i', (request()->input('page', 1) - 1) * 20);
+        return view('empaste.index', compact('empastes'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        return view('empastes.create');
+        return view('empaste.create');
     }
 
     public function store(Request $request)
@@ -34,17 +35,17 @@ class EmpastesController extends Controller
         ]);
 
         Empastes::create($request->all());
-        return redirect()->route('empastes.index')->with('success', 'Documento agregado exitosamente.');
+        return redirect()->route('empaste.index')->with('success', 'Documento agregado exitosamente.');
     }
 
     public function show(Empastes $empastes)
     {
-        return view('empastes.show', compact('empastes'));
+        return view('empaste.show', compact('empastes'));
     }
 
     public function edit(Empastes $empastes)
     {
-        return view('empastes.edit', compact('empastes'));
+        return view('empaste.edit', compact('empastes'));
     }
 
     public function update(Request $request, Empastes $empastes)
@@ -63,12 +64,12 @@ class EmpastesController extends Controller
         ]);
 
         $empastes->update($request->all());
-        return redirect()->route('empastes.index')->with('success', 'Registro modificado exitosamente.');
+        return redirect()->route('empaste.index')->with('success', 'Registro modificado exitosamente.');
     }
 
     public function destroy(Empastes $empastes)
     {
         $empastes->delete();
-        return redirect()->route('empastes.index')->with('success', 'Registro eliminado exitosamente');
+        return redirect()->route('empaste.index')->with('success', 'Registro eliminado exitosamente');
     }
 }

@@ -18,12 +18,12 @@
                     @endif
                     <div class="content">
 				        <div class="button-wrapper-large">
-					        <a href="#" class="a-btn">
+					        <a href="{{ route('auditoria.index') }}" class="a-btn">
 						        <span class="a-btn-text">Despacho</span> 
 						        <span class="a-btn-slide-text">Auditoría</span>
 						        <span class="a-btn-icon-right"><span></span></span>
 					        </a>
-					        <a href="#" class="a-btn">
+					        <a href="{{ route('juridica.index') }}" class="a-btn">
 						        <span class="a-btn-text">Dirección Jurídica</span>
 						        <span class="a-btn-slide-text">Buscar!</span>
 						    <span class="a-btn-icon-right"><span></span></span>
@@ -36,7 +36,7 @@
 						        <span class="a-btn-slide-text">Buscar!</span>
 						        <span class="a-btn-icon-right"><span></span></span>
 					        </a>
-					        <a href="#" class="a-btn">
+					        <a href="{{ route('empaste.index') }}" class="a-btn">
 						        <span class="a-btn-text">Dirección Administrativa Financiera</span>
 						        <span class="a-btn-slide-text">Contabilidad</span>
 						        <span class="a-btn-icon-right"><span></span></span>

@@ -4,9 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Auditoria;
 use Illuminate\Http\Request;
+use DB;
 
 class AuditoriaController extends Controller
 {
+    public function search(Request $request){
+        $contenedor = $request->all();
+        $auditoria = Auditoria::where('contenedor','LIKE','%'.$contenedor.'%')->get();
+        return view('auditoria.index', compact('auditoria'));
+    }
+
     public function index()
     {
         $auditoria = Auditoria::latest()->paginate(20);

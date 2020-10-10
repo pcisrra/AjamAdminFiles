@@ -12,7 +12,7 @@
                 <i class="c-sidebar-nav-icon fas fa-fw fa-tachometer-alt">
 
                 </i>
-                {{ trans('global.dashboard') }}
+                Menú Principal
             </a>
         </li>
         @can('file_access')

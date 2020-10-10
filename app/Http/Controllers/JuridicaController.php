@@ -10,7 +10,7 @@ class JuridicaController extends Controller
     public function index()
     {
         $juridica = Juridica::latest()->paginate(20);
-        return view('juridica.index', compact('juridica'))->with('i', (request()->input('page', 1) -1 ) * 20);
+        return view('juridica.index', compact('juridica'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
