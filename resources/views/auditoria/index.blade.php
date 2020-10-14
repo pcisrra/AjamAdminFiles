@@ -8,16 +8,7 @@
         </div>
     </div>
     <div class="row" style="margin-bottom: 10px;">
-        <div class="col-lg-12">
-            <form action="{{ route('auditoria.search',['contenedor'=>'']) }}" method="GET">
-                <input type="text" class="form-control" style="width: 250px;" placeholder="Búsqueda por Contenedor" name="contentSearch">
-                <span class="input-group-btn">
-                    <button type="submit" class="btn btn-danger">
-                        <span class="glyphicon glyphicon-search">Buscar</span>
-                    </button>
-                </span>
-            </form>
-        </div>
+        <div class="col-lg-12"></div>
         <div class="col-lg-12" align="right">
             <a class="btn btn-success" href="{{ route('auditoria.create') }}"> Agregar Nuevo</a>
         </div>
@@ -49,8 +40,8 @@
             </thead>
             <tbody>
                 @foreach ($auditoria as $datos)
-                <tr>
-                    <td>{{ ++$i }}</td>
+                <tr data-entry-id="{{ $datos->id }}">
+                    <td>{{ $datos->id }}</td>
                     <td>{{ $datos->estante }}</td>
                     <td>{{ $datos->cuerpo }}</td>
                     <td>{{ $datos->balda }}</td>
@@ -62,9 +53,9 @@
                     <td>{{ $datos->ambiente }}</td>
                     <td>{{ $datos->observaciones }}</td>
                     <td>
-                        <form action="{{ route('auditoria.destroy',$datos->id) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('auditoria.show',$datos->id) }}">VER</a>
-                            <a class="btn btn-primary" href="{{ route('auditoria.edit',$datos->id) }}">MODIFICAR</a>
+                        <form action="{{ route('auditoria.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
+                            <a class="btn btn-info" href="{{ route('auditoria.show', $datos->id) }}">VER</a>
+                            <a class="btn btn-primary" href="{{ route('auditoria.edit', $datos->id) }}">MODIFICAR</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>
@@ -77,4 +68,18 @@
         </div>
     </div>
     {!! $auditoria->links() !!}
+@endsection
+@section('scripts')
+@parent
+<script>
+    $(function () {
+        let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
+
+        let table = $('.datatable-File:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+        $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+    })
+</script>
 @endsection

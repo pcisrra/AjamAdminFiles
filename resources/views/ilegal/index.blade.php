@@ -3,13 +3,14 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Empastes de Contabilidad</h2>
+                <h2>Datos de Minería Ilegal</h2>
             </div>
         </div>
     </div>
-    <div class="row" style="margin-bottom: 10px;" align="right">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('empaste.create') }}"> Agregar nuevo</a>
+    <div class="row" style="margin-bottom: 10px;">
+        <div class="col-lg-12"></div>
+        <div class="col-lg-12" align="right">
+            <a class="btn btn-success" href="{{ route('ilegal.create') }}"> Agregar Nuevo</a>
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -38,9 +39,9 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($empastes as $datos)
-                <tr>
-                    <td>{{ ++$i }}</td>
+                @foreach ($ilegal as $datos)
+                <tr data-entry-id="{{ $datos->id }}">
+                    <td>{{ $datos->id }}</td>
                     <td>{{ $datos->estante }}</td>
                     <td>{{ $datos->cuerpo }}</td>
                     <td>{{ $datos->balda }}</td>
@@ -52,9 +53,9 @@
                     <td>{{ $datos->ambiente }}</td>
                     <td>{{ $datos->observaciones }}</td>
                     <td>
-                        <form action="{{ route('empaste.destroy', $datos->contenedor) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('empaste.show', $datos->id) }}">VER</a>
-                            <a class="btn btn-primary" href="{{ route('empaste.edit', $datos->id) }}">MODIFICAR</a>
+                        <form action="{{ route('ilegal.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
+                            <a class="btn btn-info" href="{{ route('ilegal.show', $datos->id) }}">VER</a>
+                            <a class="btn btn-primary" href="{{ route('ilegal.edit', $datos->id) }}">MODIFICAR</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>
@@ -63,10 +64,10 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+            </table>
         </div>
     </div>
-    {!! $empastes->links() !!}
+    {!! $ilegal->links() !!}
 @endsection
 @section('scripts')
 @parent
@@ -74,11 +75,6 @@
     $(function () {
         let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
 
-        $.extend(true, $.fn.dataTable.defaults, {
-            orderCellsTop: true,
-            order: [[ 1, 'desc' ]],
-            pageLength: 25,
-        });
         let table = $('.datatable-File:not(.ajaxTable)').DataTable({ buttons: dtButtons })
         $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
             $($.fn.dataTable.tables(true)).DataTable()

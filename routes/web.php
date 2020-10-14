@@ -4,6 +4,9 @@ Route::redirect('/', '/login');
 Route::resource('juridica','JuridicaController');
 Route::resource('auditoria','AuditoriaController');
 Route::resource('empaste','EmpastesController');
+Route::resource('asesor','AsesorController');
+Route::resource('ilegal','IlegalController');
+Route::resource('planificacion','PlanificacionController');
 //
 Route::get('/auditoria/search/','AuditoriaController@search')->name('auditoria.search');
 

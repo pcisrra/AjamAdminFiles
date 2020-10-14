@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Juridica;
 use Illuminate\Http\Request;
+use DB;
 
 class JuridicaController extends Controller
 {
@@ -66,9 +67,9 @@ class JuridicaController extends Controller
         return redirect()->route('juridica.index')->with('success', 'Registro modificado exitosamente.');
     }
 
-    public function destroy(Juridica $juridica)
+    public function destroy($contenedor)
     {
-        $juridica->delete();
-        return redirect()->route('juridica.index')->with('success', 'Registro eliminado exitosamente');
+        DB::delete('DELETE FROM direccion_juridica WHERE contenedor = ?',[$contenedor]);
+        return redirect()->route('juridica.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
     }
 }

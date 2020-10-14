@@ -129,20 +129,20 @@
             language: {
               url: languages['{{ app()->getLocale() }}']
             },
-            columnDefs: [{
-                orderable: false,
-                className: 'select-checkbox',
-                targets: 0
-                }, {
-                orderable: false,
-                searchable: false,
-                targets: -1
-                }
-            ],
-            select: {
-              style:    'multi+shift',
-              selector: 'td:first-child'
-            },
+            // columnDefs: [{
+            //     orderable: false,
+            //     className: 'select-checkbox',
+            //     targets: 0
+            //     },{
+            //     orderable: false,
+            //     searchable: false,
+            //     targets: -1
+            //     }
+            // ],
+            // select: {
+            //   style:    'multi+shift',
+            //   selector: 'td:first-child'
+            // },
             order: [],
             scrollX: true,
             pageLength: 100,

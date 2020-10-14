@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Empastes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use DB;
 
 class EmpastesController extends Controller
 {
@@ -67,9 +68,9 @@ class EmpastesController extends Controller
         return redirect()->route('empaste.index')->with('success', 'Registro modificado exitosamente.');
     }
 
-    public function destroy(Empastes $empastes)
+    public function destroy($contenedor)
     {
-        $empastes->delete();
-        return redirect()->route('empaste.index')->with('success', 'Registro eliminado exitosamente');
+        DB::delete('DELETE FROM empastes WHERE contenedor = ?',[$contenedor]);
+        return redirect()->route('empaste.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
     }
 }

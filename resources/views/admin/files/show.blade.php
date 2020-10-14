@@ -93,7 +93,4 @@
         </div>
     </div>
 </div>
-
-
-
 @endsection

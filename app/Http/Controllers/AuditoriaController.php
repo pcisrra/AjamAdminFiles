@@ -8,12 +8,6 @@ use DB;
 
 class AuditoriaController extends Controller
 {
-    public function search(Request $request){
-        $contenedor = $request->all();
-        $auditoria = Auditoria::where('contenedor','LIKE','%'.$contenedor.'%')->get();
-        return view('auditoria.index', compact('auditoria'));
-    }
-
     public function index()
     {
         $auditoria = Auditoria::latest()->paginate(20);
@@ -58,24 +52,21 @@ class AuditoriaController extends Controller
     {
         $request = validate([
             'estante' => 'required',
-            'cuerpo' => 'required|numeric',
-            'balda' => 'required|numeric',
             'contenedor' => 'required',
             'gestion' => 'required',
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'ambiente' => 'required|numeric',
             'observaciones' => 'required',
         ]);
 
         $auditoria->update($request->all());
-        return redirect()->route('auditoria.index')->with('success', 'Registro modificado exitosamente.');
+        return redirect()->route('auditoria.index')->with('success', 'Registro '.$auditoria->estante.' modificado exitosamente.');
     }
 
-    public function destroy(Auditoria $auditoria)
+    public function destroy($contenedor)
     {
-        $auditoria->delete();
-        return redirect()->route('auditoria.index')->with('success', 'Registro eliminado exitosamente.');
+        DB::delete('DELETE FROM auditoria WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
+        return redirect()->route('auditoria.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
     }
 }
