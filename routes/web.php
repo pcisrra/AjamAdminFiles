@@ -7,6 +7,8 @@ Route::resource('empaste','EmpastesController');
 Route::resource('asesor','AsesorController');
 Route::resource('ilegal','IlegalController');
 Route::resource('planificacion','PlanificacionController');
+Route::resource('fiscalizacion','FiscalizacionController');
+Route::resource('recursoHumano','RecursoHumanoController');
 //
 Route::get('/auditoria/search/','AuditoriaController@search')->name('auditoria.search');
 

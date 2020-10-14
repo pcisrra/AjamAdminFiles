@@ -54,8 +54,6 @@
                     <td>{{ $datos->observaciones }}</td>
                     <td>
                         <form action="{{ route('auditoria.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('auditoria.show', $datos->id) }}">VER</a>
-                            <a class="btn btn-primary" href="{{ route('auditoria.edit', $datos->id) }}">MODIFICAR</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>

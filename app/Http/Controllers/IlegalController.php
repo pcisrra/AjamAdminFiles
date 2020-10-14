@@ -21,7 +21,7 @@ class IlegalController extends Controller
 
     public function store(Request $request)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'cuerpo' => 'required',
             'balda' => 'required',
@@ -50,7 +50,7 @@ class IlegalController extends Controller
 
     public function update(Request $request, Ilegal $ilegal)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'contenedor' => 'required',
             'gestion' => 'required',

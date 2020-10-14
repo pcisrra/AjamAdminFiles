@@ -3,14 +3,14 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Asesores</h2>
+                <h2>Recursos Humanos</h2>
             </div>
         </div>
     </div>
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12"></div>
         <div class="col-lg-12" align="right">
-            <a class="btn btn-success" href="{{ route('asesor.create') }}"> Agregar Nuevo</a>
+            <a class="btn btn-success" href="{{ route('recursoHumano.create') }}"> Agregar Nuevo</a>
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -39,7 +39,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($asesor as $datos)
+                @foreach ($recursoHumano as $datos)
                 <tr data-entry-id="{{ $datos->id }}">
                     <td>{{ $datos->id }}</td>
                     <td>{{ $datos->estante }}</td>
@@ -53,7 +53,7 @@
                     <td>{{ $datos->ambiente }}</td>
                     <td>{{ $datos->observaciones }}</td>
                     <td>
-                        <form action="{{ route('asesor.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
+                        <form action="{{ route('recursoHumano.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">                            
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>
@@ -65,7 +65,7 @@
             </table>
         </div>
     </div>
-    {!! $asesor->links() !!}
+    {!! $recursoHumano->links() !!}
 @endsection
 @section('scripts')
 @parent

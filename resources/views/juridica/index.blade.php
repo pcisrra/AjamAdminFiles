@@ -53,8 +53,6 @@
                     <td>{{ $datos->observaciones }}</td>
                     <td>
                         <form action="{{ route('juridica.destroy', $datos->contenedor) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('juridica.show', $datos->id) }}">VER</a>
-                            <a class="btn btn-primary" href="{{ route('juridica.edit', $datos->id) }}">MODIFICAR</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>

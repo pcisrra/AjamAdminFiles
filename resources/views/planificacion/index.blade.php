@@ -54,8 +54,6 @@
                     <td>{{ $datos->observaciones }}</td>
                     <td>
                         <form action="{{ route('planificacion.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
-                            <a class="btn btn-info" href="{{ route('planificacion.show', $datos->id) }}">VER</a>
-                            <a class="btn btn-primary" href="{{ route('planificacion.edit', $datos->id) }}">MODIFICAR</a>
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>

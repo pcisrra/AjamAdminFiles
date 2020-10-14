@@ -21,7 +21,7 @@ class FiscalizacionController extends Controller
 
     public function store(Request $request)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'cuerpo' => 'required',
             'balda' => 'required',
@@ -50,7 +50,7 @@ class FiscalizacionController extends Controller
 
     public function update(Request $request, Fiscalizacion $fiscalizacion)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'contenedor' => 'required',
             'gestion' => 'required',

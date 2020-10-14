@@ -21,7 +21,7 @@ class JuridicaController extends Controller
 
     public function store(Request $request)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'cuerpo' => 'required',
             'balda' => 'required',
@@ -50,7 +50,7 @@ class JuridicaController extends Controller
 
     public function update(Request $request, Juridica $juridica)
     {
-        $request = validate([
+        $request->validate([
             'estante' => 'required',
             'cuerpo' => 'required|numeric',
             'balda' => 'required|numeric',
