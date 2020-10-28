@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Juridica;
+use App\Fondo;
 use Illuminate\Http\Request;
 use DB;
 
-class JuridicaController extends Controller
+class FondoController extends Controller
 {
     public function index()
     {
-        $juridica = Juridica::latest()->paginate(20);
-        return view('juridica.index', compact('juridica'))->with('i', (request()->input('page', 1) - 1) * 20);
+        $fondo = Fondo::latest()->paginate(20);
+        return view('fondo.index', compact('fondo'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        return view('juridica.create');
+        return view('fondo.create');
     }
 
     public function store(Request $request)
@@ -34,21 +34,21 @@ class JuridicaController extends Controller
             'observaciones' => 'required',
         ]);
 
-        Juridica::create($request->all());
-        return redirect()->route('juridica.index')->with('success', 'Documento agregado exitosamente.');
+        Fondo::create($request->all());
+        return redirect()->route('fondo.index')->with('success', 'Documento agregado exitosamente.');
     }
 
-    public function show(Juridica $juridica)
+    public function show(Fondo $fondo)
     {
-        return view('juridica.show', compact('juridica'));
+        return view('fondo.show', compact('fondo'));
     }
 
-    public function edit(Juridica $juridica)
+    public function edit(Fondo $fondo)
     {
-        return view('juridica.edit', compact('juridica'));
+        return view('fondo.edit', compact('fondo'));
     }
 
-    public function update(Request $request, Juridica $juridica)
+    public function update(Request $request, Fondo $fondo)
     {
         $request->validate([
             'estante' => 'required',
@@ -60,13 +60,13 @@ class JuridicaController extends Controller
             'observaciones' => 'required',
         ]);
 
-        $juridica->update($request->all());
-        return redirect()->route('juridica.index')->with('success', 'Registro '.$juridica->contenedor.' modificado exitosamente.');
+        $fondo->update($request->all());
+        return redirect()->route('fondo.index')->with('success', 'Registro '.$fondo->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)
     {
-        DB::delete('DELETE FROM direccion_juridica WHERE contenedor = ?',[$contenedor]);
-        return redirect()->route('juridica.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+        DB::delete('DELETE FROM fondo WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
+        return redirect()->route('fondo.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
     }
 }

@@ -61,7 +61,7 @@ class AsesorController extends Controller
         ]);
 
         $asesor->update($request->all());
-        return redirect()->route('asesor.index')->with('success', 'Registro '.$asesor->estante.' modificado exitosamente.');
+        return redirect()->route('asesor.index')->with('success', 'Registro '.$asesor->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

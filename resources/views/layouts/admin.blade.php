@@ -29,7 +29,7 @@
 <body class="c-app">
     @include('partials.menu')
     <div class="c-wrapper">
-        <header class="c-header c-header-fixed px-3">
+        <header class="c-header c-header-fixed px-3 responsive">
             <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
@@ -53,15 +53,10 @@
                         </div>
                     </li>
                 @endif
-
-
             </ul>
         </header>
-
         <div class="c-body">
             <main class="c-main">
-
-
                 <div class="container-fluid">
                     @if(session('message'))
                         <div class="row mb-2">
@@ -148,28 +143,7 @@
             scrollX: true,
             pageLength: 100,
             dom: 'lBfrtip<"actions">',
-            buttons: [
-              {
-                extend: 'selectAll',
-                className: 'btn-primary',
-                text: selectAllButtonTrans,
-                exportOptions: {
-                  columns: ':visible'
-                },
-                action: function(e, dt) {
-                  e.preventDefault()
-                  dt.rows().deselect();
-                  dt.rows({ search: 'applied' }).select();
-                }
-              },
-              {
-                extend: 'selectNone',
-                className: 'btn-primary',
-                text: selectNoneButtonTrans,
-                exportOptions: {
-                  columns: ':visible'
-                }
-              },
+            buttons: [              
               {
                 extend: 'copy',
                 className: 'btn-default',
@@ -206,14 +180,6 @@
                 extend: 'print',
                 className: 'btn-default',
                 text: printButtonTrans,
-                exportOptions: {
-                  columns: ':visible'
-                }
-              },
-              {
-                extend: 'colvis',
-                className: 'btn-default',
-                text: colvisButtonTrans,
                 exportOptions: {
                   columns: ':visible'
                 }

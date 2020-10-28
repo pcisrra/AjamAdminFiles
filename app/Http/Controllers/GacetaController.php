@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Juridica;
+use App\Gaceta;
 use Illuminate\Http\Request;
 use DB;
 
-class JuridicaController extends Controller
+class GacetaController extends Controller
 {
     public function index()
     {
-        $juridica = Juridica::latest()->paginate(20);
-        return view('juridica.index', compact('juridica'))->with('i', (request()->input('page', 1) - 1) * 20);
+        $gaceta = Gaceta::latest()->paginate(20);
+        return view('gaceta.index', compact('gaceta'))->with('i', (request()->input('page', 1) - 1) * 20);
     }
 
     public function create()
     {
-        return view('juridica.create');
+        return view('gaceta.create');
     }
 
     public function store(Request $request)
@@ -34,21 +34,21 @@ class JuridicaController extends Controller
             'observaciones' => 'required',
         ]);
 
-        Juridica::create($request->all());
-        return redirect()->route('juridica.index')->with('success', 'Documento agregado exitosamente.');
+        Gaceta::create($request->all());
+        return redirect()->route('gaceta.index')->with('success', 'Documento agregado exitosamente.');
     }
 
-    public function show(Juridica $juridica)
+    public function show(Gaceta $gaceta)
     {
-        return view('juridica.show', compact('juridica'));
+        return view('gaceta.show', compact('gaceta'));
     }
 
-    public function edit(Juridica $juridica)
+    public function edit(Gaceta $gaceta)
     {
-        return view('juridica.edit', compact('juridica'));
+        return view('gaceta.edit', compact('gaceta'));
     }
 
-    public function update(Request $request, Juridica $juridica)
+    public function update(Request $request, Gaceta $gaceta)
     {
         $request->validate([
             'estante' => 'required',
@@ -60,13 +60,13 @@ class JuridicaController extends Controller
             'observaciones' => 'required',
         ]);
 
-        $juridica->update($request->all());
-        return redirect()->route('juridica.index')->with('success', 'Registro '.$juridica->contenedor.' modificado exitosamente.');
+        $gaceta->update($request->all());
+        return redirect()->route('gaceta.index')->with('success', 'Registro '.$gaceta->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)
     {
-        DB::delete('DELETE FROM direccion_juridica WHERE contenedor = ?',[$contenedor]);
-        return redirect()->route('juridica.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+        DB::delete('DELETE FROM gaceta WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
+        return redirect()->route('gaceta.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
     }
 }

@@ -6,7 +6,7 @@
         <div class="card mx-4">
             <div class="card-body p-4">
                 <!--<h1>{{ trans('panel.site_title') }}</h1>-->
-                <img alt="logo" src="{{ asset('images/ajam-icon.jpeg') }}" class="image-sizer">
+                <img alt="logo" src="{{ asset('images/ajam-icon.jpeg') }}" class="image-sizer responsive">
 
                 <p class="text-muted">{{ trans('global.login') }}</p>
 

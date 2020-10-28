@@ -61,7 +61,7 @@ class AuditoriaController extends Controller
         ]);
 
         $auditoria->update($request->all());
-        return redirect()->route('auditoria.index')->with('success', 'Registro '.$auditoria->estante.' modificado exitosamente.');
+        return redirect()->route('auditoria.index')->with('success', 'Registro '.$auditoria->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

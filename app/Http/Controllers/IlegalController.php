@@ -61,7 +61,7 @@ class IlegalController extends Controller
         ]);
 
         $ilegal->update($request->all());
-        return redirect()->route('ilegal.index')->with('success', 'Registro '.$ilegal->estante.' modificado exitosamente.');
+        return redirect()->route('ilegal.index')->with('success', 'Registro '.$ilegal->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

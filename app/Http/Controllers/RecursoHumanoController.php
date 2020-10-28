@@ -61,7 +61,7 @@ class RecursoHumanoController extends Controller
         ]);
 
         $recursoHumano->update($request->all());
-        return redirect()->route('recursoHumano.index')->with('success', 'Registro '.$recursoHumano->estante.' modificado exitosamente.');
+        return redirect()->route('recursoHumano.index')->with('success', 'Registro '.$recursoHumano->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

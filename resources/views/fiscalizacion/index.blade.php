@@ -1,16 +1,16 @@
 @extends('layouts.admin')
 @section('content')
+<link href="{{ asset('css/style3.css') }}" rel="stylesheet" type="text/css">
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Documentos de Fiscalización, Control y Coordinación</h2>
+                <h2>Fiscalizaciones</h2>
             </div>
-        </div>
-    </div>
-    <div class="row" style="margin-bottom: 10px;">
-        <div class="col-lg-12"></div>
-        <div class="col-lg-12" align="right">
-            <a class="btn btn-success" href="{{ route('fiscalizacion.create') }}"> Agregar Nuevo</a>
+            @can('file_show')
+            <div class="col-lg-12" align="right">
+                <a class="btn btn-success" href="{{ route('fiscalizacion.create') }}"> Agregar Nuevo</a>
+            </div>
+            @endcan
         </div>
     </div>
     @if ($message = Session::get('success'))
@@ -18,7 +18,6 @@
             <p>{{ $message }}</p>
         </div>
     @endif
-   
     <div class="card-body">
         <div class="table-responsive">
             <table class=" table table-bordered table-striped table-hover datatable datatable-File">
@@ -35,7 +34,7 @@
                     <th>Dato Institucional</th>
                     <th>Ambiente</th>
                     <th>Observaciones</th>
-                    <th width="280px">Acciones</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -53,11 +52,16 @@
                     <td>{{ $datos->ambiente }}</td>
                     <td>{{ $datos->observaciones }}</td>
                     <td>
+                        @can('file_show')
+                        <a class="btn btn-xs btn-info button-update" href="{{ route('fiscalizacion.edit', $datos->id) }}">
+                            MODIFICAR
+                        </a>
                         <form action="{{ route('fiscalizacion.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
-                            @csrf
+                            @csrf                            
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach

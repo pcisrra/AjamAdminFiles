@@ -132,6 +132,24 @@
     margin: 10px;
 }
 .image-sizer{
-    width: 360px;
-    height: 140px;
+    width: 320px;
+    height: 100px;
+}
+.responsive{
+    width: 100%;
+    height: auto;
+}
+.update-form{
+    width: 450px;
+    margin: 20px;
+}
+.button-update{
+    width: 88px;
+    height: 31px;
+    text-align: center;
+    margin: 0;
+    padding: 0px;
+}
+.table.dataTable{
+    overflow: hidden;
 }

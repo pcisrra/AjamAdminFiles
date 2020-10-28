@@ -159,8 +159,10 @@ h1 span{
 	height: 80px;
 }
 .card{
-	width: 950px;
-	height: 500px;
+	/*width: 950px;*/
+	/*height: 500px;*/
+    width: 100%;
+    height: auto;
 }
 .btn-primary{
 	top: 50%;
@@ -177,4 +179,8 @@ h1 span{
 	transform: translate(-50%, -50%);
 	position: relative;
 	background-color: #008CBA;
+}
+.responsive{
+    width: 100%;
+    height: auto;
 }

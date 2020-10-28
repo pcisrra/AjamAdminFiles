@@ -4,11 +4,11 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Dirección Jurídica</h2>
+                <h2>Gaceta Nacional Minera</h2>
             </div>
             @can('file_show')
             <div class="col-lg-12" align="right">
-                <a class="btn btn-success" href="{{ route('juridica.create') }}"> Agregar Nuevo</a>
+                <a class="btn btn-success" href="{{ route('gaceta.create') }}"> Agregar Nuevo</a>
             </div>
             @endcan
         </div>
@@ -38,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($juridica as $datos)
+                @foreach ($gaceta as $datos)
                 <tr data-entry-id="{{ $datos->id }}">
                     <td>{{ $datos->id }}</td>
                     <td>{{ $datos->estante }}</td>
@@ -53,10 +53,10 @@
                     <td>{{ $datos->observaciones }}</td>
                     <td>
                         @can('file_show')
-                        <a class="btn btn-xs btn-info button-update" href="{{ route('juridica.edit', $datos->id) }}">
+                        <a class="btn btn-xs btn-info button-update" href="{{ route('gaceta.edit', $datos->id) }}">
                             MODIFICAR
                         </a>
-                        <form action="{{ route('juridica.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
+                        <form action="{{ route('gaceta.destroy', str_replace('/','',$datos->contenedor)) }}" method="POST">
                             @csrf                            
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">ELIMINAR</button>
@@ -69,7 +69,7 @@
             </table>
         </div>
     </div>
-    {!! $juridica->links() !!}
+    {!! $gaceta->links() !!}
 @endsection
 @section('scripts')
 @parent

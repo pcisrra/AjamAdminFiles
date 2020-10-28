@@ -53,19 +53,16 @@ class EmpastesController extends Controller
     {
         $request->validate([
             'estante' => 'required',
-            'cuerpo' => 'required|numeric',
-            'balda' => 'required|numeric',
             'contenedor' => 'required',
             'gestion' => 'required',
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'ambiente' => 'required|numeric',
             'observaciones' => 'required',
         ]);
 
         $empastes->update($request->all());
-        return redirect()->route('empaste.index')->with('success', 'Registro modificado exitosamente.');
+        return redirect()->route('empaste.index')->with('success', 'Registro '.$empastes->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

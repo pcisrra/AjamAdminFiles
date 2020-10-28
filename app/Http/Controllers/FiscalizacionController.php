@@ -61,7 +61,7 @@ class FiscalizacionController extends Controller
         ]);
 
         $fiscalizacion->update($request->all());
-        return redirect()->route('fiscalizacion.index')->with('success', 'Registro '.$fiscalizacion->estante.' modificado exitosamente.');
+        return redirect()->route('fiscalizacion.index')->with('success', 'Registro '.$fiscalizacion->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)

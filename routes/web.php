@@ -9,6 +9,10 @@ Route::resource('ilegal','IlegalController');
 Route::resource('planificacion','PlanificacionController');
 Route::resource('fiscalizacion','FiscalizacionController');
 Route::resource('recursoHumano','RecursoHumanoController');
+Route::resource('fondo','FondoController');
+Route::resource('regional','RegionalController');
+Route::resource('gaceta','GacetaController');
+Route::resource('unidad_tecnica','UnidadTecnicaController');
 //
 Route::get('/auditoria/search/','AuditoriaController@search')->name('auditoria.search');
 

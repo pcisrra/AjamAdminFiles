@@ -61,7 +61,7 @@ class PlanificacionController extends Controller
         ]);
 
         $planificacion->update($request->all());
-        return redirect()->route('planificacion.index')->with('success', 'Registro '.$planificacion->estante.' modificado exitosamente.');
+        return redirect()->route('planificacion.index')->with('success', 'Registro '.$planificacion->contenedor.' modificado exitosamente.');
     }
 
     public function destroy($contenedor)
