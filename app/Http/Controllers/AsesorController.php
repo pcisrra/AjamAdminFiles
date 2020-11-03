@@ -32,6 +32,7 @@ class AsesorController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Asesor::create($request->all());
@@ -58,6 +59,7 @@ class AsesorController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $asesor->update($request->all());

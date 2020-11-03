@@ -102,6 +102,15 @@
                         </div>
                     @endif
                 </div>
+                <!-- <div class="form-group">
+                    <label for="observaciones">Documento prestado a:</label>
+                    <input class="form-control {{ $errors->has('disponibilidad') ? 'is-invalid' : '' }}" type="text" name="disponibilidad" id="disponibilidad" value="{{ old('disponibilidad', '') }}" step="1">
+                    @if($errors->has('disponibilidad'))
+                        <div class="invalid-feedback">
+                            {{ $errors->first('disponibilidad') }}
+                        </div>
+                    @endif
+                </div> -->
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

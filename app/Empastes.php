@@ -16,6 +16,7 @@ class Empastes extends Model
         'antecedente',
         'data_institucional',
         'ambiente',
-        'observaciones'
+        'observaciones',
+        'disponibilidad'
     ];
 }

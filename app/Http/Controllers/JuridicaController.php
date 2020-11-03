@@ -32,6 +32,7 @@ class JuridicaController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Juridica::create($request->all());
@@ -58,6 +59,7 @@ class JuridicaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $juridica->update($request->all());

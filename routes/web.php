@@ -13,8 +13,8 @@ Route::resource('fondo','FondoController');
 Route::resource('regional','RegionalController');
 Route::resource('gaceta','GacetaController');
 Route::resource('unidad_tecnica','UnidadTecnicaController');
-//
-Route::get('/auditoria/search/','AuditoriaController@search')->name('auditoria.search');
+
+Route::get('/fiscalizacion/ChangeState/{id}/{estado}','FiscalizacionController@ChangeState')->name('fiscalizacion.ChangeState');
 
 Route::get('/home', function () {
     if (session('status')) {

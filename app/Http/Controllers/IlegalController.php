@@ -32,6 +32,7 @@ class IlegalController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Ilegal::create($request->all());
@@ -58,6 +59,7 @@ class IlegalController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $ilegal->update($request->all());

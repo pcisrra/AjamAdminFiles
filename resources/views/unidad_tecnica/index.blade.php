@@ -4,7 +4,7 @@
     <div class="row" style="margin-bottom: 10px;">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Documentos en Unidad Técnica</h2>
+                <h2>Unidad Técnica</h2>
             </div>
             @can('file_show')
             <div class="col-lg-12" align="right">
@@ -34,6 +34,7 @@
                     <th>Dato Institucional</th>
                     <th>Ambiente</th>
                     <th>Observaciones</th>
+                    <th>Disponibilidad</th>
                     <th></th>
                 </tr>
             </thead>
@@ -51,8 +52,12 @@
                     <td>{{ $datos->data_institucional }}</td>
                     <td>{{ $datos->ambiente }}</td>
                     <td>{{ $datos->observaciones }}</td>
+                    <td>{{ $datos->disponibilidad }}</td>
                     <td>
                         @can('file_show')
+                        <a class="btn btn-success" href="{{ route('unidad_tecnica.ChangeState', ['id' => $datos->id, 'estado' => $datos->disponibilidad]) }}">
+                            CAMBIAR DISPONIBILIDAD
+                        </a>
                         <a class="btn btn-xs btn-info button-update" href="{{ route('unidad_tecnica.edit', $datos->id) }}">
                             MODIFICAR
                         </a>

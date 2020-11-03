@@ -32,6 +32,7 @@ class UnidadTecnicaController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         UnidadTecnica::create($request->all());
@@ -58,6 +59,7 @@ class UnidadTecnicaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $unidad_tecnica->update($request->all());

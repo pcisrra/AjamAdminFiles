@@ -32,6 +32,7 @@ class AuditoriaController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Auditoria::create($request->all());
@@ -58,6 +59,7 @@ class AuditoriaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $auditoria->update($request->all());

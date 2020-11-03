@@ -32,6 +32,7 @@ class PlanificacionController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         Planificacion::create($request->all());
@@ -58,6 +59,7 @@ class PlanificacionController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $planificacion->update($request->all());

@@ -47,7 +47,7 @@
 				        <br>
 				        <div class="button-wrapper-large">
 				        	<a data-toggle="modal" data-target="#modalGlosario" class="a-btn" href="#modalGlosario">
-						        <span class="a-btn-text">GLOSARIO</span>
+						        <span class="a-btn-text">Glosario</span>
 						        <span class="a-btn-slide-text">Mostrar</span>
 						        <span class="a-btn-icon-right"><span></span></span>
 					        </a>
@@ -70,7 +70,7 @@
 									<a class="btn btn-primary seg" href="{{ route('ilegal.index') }}">Minería Ilegal</a>
 								</div>
 								<div class="button-wrapper-large">
-									<a class="btn btn-primary" href="{{ route('asesor.index') }}">Asesores</a>
+									<a class="btn btn-primary" href="{{ route('asesor.index') }}">Asesor/a>
 									<a class="btn btn-primary seg" href="{{ route('planificacion.index') }}">Planificación</a>
 								</div>
 								<div class="button-wrapper-large">
@@ -88,7 +88,7 @@
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h4 class="modal-title" id="myModalLabel">DOCUMENTOS EN GESTIÓN FINANCIERA</h4>
+								<h4 class="modal-title" id="myModalLabel">DIRECCIÓN ADMINISTRATIVA FINANCIERA</h4>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">×</span>
 								</button>

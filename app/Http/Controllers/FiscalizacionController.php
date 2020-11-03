@@ -32,6 +32,7 @@ class FiscalizacionController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Fiscalizacion::create($request->all());
@@ -68,5 +69,14 @@ class FiscalizacionController extends Controller
     {
         DB::delete('DELETE FROM fiscalizacion WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('fiscalizacion.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE fiscalizacion SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE fiscalizacion SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('fiscalizacion.index');
     }
 }

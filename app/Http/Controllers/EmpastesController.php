@@ -33,6 +33,7 @@ class EmpastesController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Empastes::create($request->all());
@@ -59,6 +60,7 @@ class EmpastesController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $empastes->update($request->all());

@@ -32,6 +32,7 @@ class FondoController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         Fondo::create($request->all());
@@ -58,6 +59,7 @@ class FondoController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $fondo->update($request->all());

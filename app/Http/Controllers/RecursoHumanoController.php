@@ -32,6 +32,7 @@ class RecursoHumanoController extends Controller
             'data_institucional' => 'required',
             'ambiente' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required',
         ]);
 
         RecursoHumano::create($request->all());
@@ -58,6 +59,7 @@ class RecursoHumanoController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'observaciones' => 'required',
+            //'disponibilidad' => 'required'
         ]);
 
         $recursoHumano->update($request->all());
