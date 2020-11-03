@@ -31,8 +31,7 @@ class GacetaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         Gaceta::create($request->all());
@@ -58,8 +57,7 @@ class GacetaController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $gaceta->update($request->all());
@@ -70,5 +68,14 @@ class GacetaController extends Controller
     {
         DB::delete('DELETE FROM gaceta WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('gaceta.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE gaceta SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE gaceta SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('gaceta.index');
     }
 }

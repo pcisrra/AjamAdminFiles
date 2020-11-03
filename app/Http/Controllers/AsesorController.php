@@ -31,8 +31,7 @@ class AsesorController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         Asesor::create($request->all());
@@ -58,8 +57,7 @@ class AsesorController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $asesor->update($request->all());
@@ -70,5 +68,14 @@ class AsesorController extends Controller
     {
         DB::delete('DELETE FROM asesor WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('asesor.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE asesor SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE asesor SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('asesor.index');
     }
 }

@@ -31,8 +31,7 @@ class UnidadTecnicaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         UnidadTecnica::create($request->all());
@@ -58,8 +57,7 @@ class UnidadTecnicaController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $unidad_tecnica->update($request->all());
@@ -70,5 +68,14 @@ class UnidadTecnicaController extends Controller
     {
         DB::delete('DELETE FROM unidad_tecnica WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('unidad_tecnica.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE unidad_tecnica SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE unidad_tecnica SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('unidad_tecnica.index');
     }
 }

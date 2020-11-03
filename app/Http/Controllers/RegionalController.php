@@ -31,8 +31,7 @@ class RegionalController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         Regional::create($request->all());
@@ -58,8 +57,7 @@ class RegionalController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $regional->update($request->all());
@@ -70,5 +68,14 @@ class RegionalController extends Controller
     {
         DB::delete('DELETE FROM regional WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('regional.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE regional SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE regional SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('regional.index');
     }
 }

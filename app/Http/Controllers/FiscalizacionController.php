@@ -31,8 +31,7 @@ class FiscalizacionController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         Fiscalizacion::create($request->all());

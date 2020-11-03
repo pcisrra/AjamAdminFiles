@@ -31,8 +31,7 @@ class RecursoHumanoController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         RecursoHumano::create($request->all());
@@ -58,8 +57,7 @@ class RecursoHumanoController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $recursoHumano->update($request->all());
@@ -70,5 +68,14 @@ class RecursoHumanoController extends Controller
     {
         DB::delete('DELETE FROM recursoHumano WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('recursoHumano.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE recursoHumano SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE recursoHumano SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('recursoHumano.index');
     }
 }

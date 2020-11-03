@@ -31,8 +31,7 @@ class AuditoriaController extends Controller
             'antecedente' => 'required',
             'data_institucional' => 'required',
             'ambiente' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required',
+            'observaciones' => 'required'
         ]);
 
         Auditoria::create($request->all());
@@ -58,8 +57,7 @@ class AuditoriaController extends Controller
             'descripcion' => 'required',
             'antecedente' => 'required',
             'data_institucional' => 'required',
-            'observaciones' => 'required',
-            //'disponibilidad' => 'required'
+            'observaciones' => 'required'
         ]);
 
         $auditoria->update($request->all());
@@ -70,5 +68,14 @@ class AuditoriaController extends Controller
     {
         DB::delete('DELETE FROM auditoria WHERE REPLACE(contenedor,?,?) = ?',['/','',$contenedor]);
         return redirect()->route('auditoria.index')->with('success', 'Registro '.$contenedor.' eliminado exitosamente.');
+    }
+
+    public function ChangeState($id, $estado){
+        if($estado == 'DISPONIBLE AC')
+            DB::update('UPDATE auditoria SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+        else
+            DB::update('UPDATE auditoria SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+        
+        return redirect()->route('auditoria.index');
     }
 }
