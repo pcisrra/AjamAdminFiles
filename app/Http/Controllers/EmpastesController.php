@@ -73,9 +73,9 @@ class EmpastesController extends Controller
 
     public function ChangeState($id, $estado){
         if($estado == 'DISPONIBLE AC')
-            DB::update('UPDATE empaste SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
+            DB::update('UPDATE empastes SET disponibilidad = ? WHERE id = ?', ['DOC. PRESTADO', $id]);
         else
-            DB::update('UPDATE empaste SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
+            DB::update('UPDATE empastes SET disponibilidad = ? WHERE id = ?', ['DISPONIBLE AC', $id]);
         
         return redirect()->route('empaste.index');
     }
